@@ -20,5 +20,10 @@ NOTE: If you have already downloaded Windows Updates and you want to install the
  * Make sure to restart after that as it will also checks the disks for errors, and that should be it!
 
 ## Troubleshooing
- * The script frezzes at the starts:
+ * The script freezes at the starts:
    - Restart the computer
+ * The script freezes in the middle:
+   - copy and paste in the PowerShell (as admin)
+     
+           iwr -useb https://raw.githubusercontent.com/Abdullah-Albanna/WinMaint/main/Updates%20Reset.ps1 | iex
+     and restart

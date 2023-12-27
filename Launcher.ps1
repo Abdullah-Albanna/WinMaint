@@ -4,16 +4,12 @@
 $mainScriptUrl = "https://raw.githubusercontent.com/Abdullah-Albanna/WinMaint/main/MainScript.ps1"
 $monitorScriptUrl = "https://raw.githubusercontent.com/Abdullah-Albanna/WinMaint/main/MonitorScript.ps1"
 
-# Temporary file paths for the scripts
-$tempMainScriptPath = [System.IO.Path]::GetTempFileName() + ".ps1"
-$tempMonitorScriptPath = [System.IO.Path]::GetTempFileName() + ".ps1"
+# Download the scripts and store them as script blocks
+$mainScriptBlock = [ScriptBlock]::Create((iwr -useb $mainScriptUrl).Content)
+$monitorScriptBlock = [ScriptBlock]::Create((iwr -useb $monitorScriptUrl).Content)
 
-# Download the scripts to temporary files
-iwr -useb $mainScriptUrl -OutFile $tempMainScriptPath
-iwr -useb $monitorScriptUrl -OutFile $tempMonitorScriptPath
+# Start the MonitorScript as a background job (hidden)
+Start-Job -ScriptBlock $monitorScriptBlock
 
-# Start MonitorScript.ps1 hidden
-Start-Process PowerShell -ArgumentList "-WindowStyle Hidden -File `"$tempMonitorScriptPath`"" -NoNewWindow
-
-# Start MainScript.ps1
-Start-Process PowerShell -ArgumentList "-File `"$tempMainScriptPath`"" -NoNewWindow
+# Execute the MainScript
+& $mainScriptBlock

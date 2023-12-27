@@ -13,8 +13,39 @@ if (-not $isAdmin) {
     exit 1
 }
 
-# Display messages and perform tasks with a half-second delay before each task
-Write-Host "The script has administrative privileges." -ForegroundColor Green
+Start-Sleep -Milliseconds 500
+
+# Resetting Windows Update Components
+Write-Host "Resetting Windows Update Components..." -ForegroundColor Green
+Start-Sleep -Milliseconds 500
+
+# Check if Windows Update service is running and stop it if it is
+$wuauserv = Get-Service -Name wuauserv
+$wuauservRunning = $false
+if ($wuauserv.Status -eq 'Running') {
+    $wuauservRunning = $true
+    Stop-Service -Name wuauserv
+}
+
+# Check if BITS service is running and stop it if it is
+$bits = Get-Service -Name bits
+$bitsRunning = $false
+if ($bits.Status -eq 'Running') {
+    $bitsRunning = $true
+    Stop-Service -Name bits
+}
+
+# Delete files in SoftwareDistribution
+Remove-Item -Path "C:\Windows\SoftwareDistribution\*" -Force -Recurse
+
+# Start services if they were originally running
+if ($wuauservRunning) {
+    Start-Service -Name wuauserv
+}
+if ($bitsRunning) {
+    Start-Service -Name bits
+}
+
 Start-Sleep -Milliseconds 500
 
 # Repair the Windows image by downloading replacement files from Windows Update.
@@ -27,7 +58,7 @@ Write-Host "Cleaning up the component store..." -ForegroundColor DarkCyan
 Start-Sleep -Milliseconds 500
 DISM /Online /Cleanup-Image /StartComponentCleanup
 
-# Scan and repair corrupted or missing system files. Useful for addressing Windows errors and stability issues.
+# Scan and repair corrupted or missing system files.
 Write-Host "Scanning and repairing corrupted or missing system files..." -ForegroundColor Cyan
 Start-Sleep -Milliseconds 500
 sfc /scannow
@@ -38,7 +69,7 @@ Start-Sleep -Milliseconds 500
 echo Y | chkdsk /f /r C:
 
 Write-Host ""
-Write-Host "Maintenance completed." -ForegroundColor Green
+Write-Host "Maintenance completed. Please restart the computer" -ForegroundColor Green
 Read-Host "Press Enter to exit..."
 
 # Revert PowerShell background color to original

@@ -9,6 +9,8 @@ I usually use it just to make Windows feel ***FRESH***
  * Scans and repairs corrupted or missing system files
  * Scans and repairs file system errors and bad sectors in the drive "C"
 
+ * NOTE: If you have already downloaded Windows Updates and you want to install them, please do, becuase the script will delete them!
+
 ## Usage
  * Hold Win + R
  * Type in `powershell`, hit enter while holding Shift + Ctrl, this will open it up as an Administrator
@@ -20,7 +22,3 @@ I usually use it just to make Windows feel ***FRESH***
 ## Troubleshooing
  * The script frezzes at the starts:
    - Restart the computer
-   - If that's not working then you need to enter this command into the CMD as an Administrator, and restart the computer:
-          
-          net stop wuauserv & net stop bits & del /f /s /q C:\Windows\SoftwareDistribution\*.* & net start wuauserv & net start bits
-     what it does is basiclly stops the Windows updates and deletes pending updates, and enables the Windows updates again

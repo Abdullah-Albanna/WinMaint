@@ -73,12 +73,12 @@ Write-Host "Press any key to exit..."
 # Wait for any key press
 [Console]::ReadKey() > $null
 
-# Forcefully terminate the PowerShell process
-[System.Environment]::Exit(0)
-
 # Stop logging
 Stop-Transcript
 
 # Revert PowerShell background color to original
 $Host.UI.RawUI.BackgroundColor = $originalBgColor
 Clear-Host
+
+# Forcefully terminate the PowerShell process
+[System.Environment]::Exit(0)

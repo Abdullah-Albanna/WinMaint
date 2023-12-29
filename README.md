@@ -9,7 +9,8 @@ I usually use it just to make Windows feel ***FRESH***
  * Scans and repairs corrupted or missing system files
  * Scans and repairs file system errors and bad sectors in the drive "C"
 
-NOTE: If you have already downloaded Windows Updates and you want to install them, please do, becuase the script will delete them!
+NOTE: If you have already downloaded Windows Updates and you want to install them, please do, becuase the script will delete them!.
+      It also turns on `Bits` `wuauserv`, which are Windows Updates services (I get more successful rate when thoes are on, you could obviouslly turn them off later if you want)
 
 ## Usage
  * Hold Win + R
@@ -20,10 +21,6 @@ NOTE: If you have already downloaded Windows Updates and you want to install the
  * Make sure to restart after that as it will also checks the disks for errors, and that should be it!
 
 ## Troubleshooing
- * The script freezes at the start:
+ * The script freezes at the start/middle:
+   - Close PowerShell 
    - Restart the computer
- * The script freezes in the middle of the script:
-   - copy and paste in the PowerShell (as admin)
-     
-           iwr -useb https://raw.githubusercontent.com/Abdullah-Albanna/WinMaint/main/Updates%20Reset.ps1 | iex
-     and restart

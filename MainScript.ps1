@@ -68,7 +68,13 @@ Start-Sleep -Milliseconds 500
 
 Write-Host ""
 Write-Host "Maintenance completed. Please restart the computer" -ForegroundColor Green
-Read-Host "Press Enter to exit..."
+Write-Host "Press any key to exit..."
+
+# Wait for any key press
+[Console]::ReadKey() > $null
+
+# Forcefully terminate the PowerShell process
+[System.Environment]::Exit(0)
 
 # Stop logging
 Stop-Transcript

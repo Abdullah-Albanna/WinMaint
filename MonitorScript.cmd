@@ -1,11 +1,14 @@
 @echo off
-SETLOCAL ENABLEDELAYEDEXPANSION
+
+# This script automates the proccess of deleting the "SoftwareDistribution" folder if the MainScript.ps1 failed/froze/the user closed it before finishing
+# as that would cause the "Getting Windows ready" message when restarting to get stuck!
+ SETLOCAL ENABLEDELAYEDEXPANSION
 
 :loop
 REM Check if powershell.exe is running
 tasklist /FI "IMAGENAME eq powershell.exe" 2>NUL | find /I /N "powershell.exe">NUL
 if "%ERRORLEVEL%"=="0" (
-    REM powershell.exe is running, wait for some time
+    REM powershell.exe is running
     timeout /t 5 /nobreak >NUL
     goto loop
 ) else (

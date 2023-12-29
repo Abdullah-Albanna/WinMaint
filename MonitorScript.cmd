@@ -1,7 +1,7 @@
-@echo off
-
 # This script automates the proccess of deleting the "SoftwareDistribution" folder if the MainScript.ps1 failed/froze/the user closed it before finishing
 # as that would cause the "Getting Windows ready" message when restarting to get stuck!
+
+@echo off
  SETLOCAL ENABLEDELAYEDEXPANSION
 
 :loop

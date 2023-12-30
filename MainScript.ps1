@@ -34,37 +34,37 @@ Write-Host "Resetting Windows Update Components..." -ForegroundColor Green
 Start-Sleep -Milliseconds 500
 
 # Stop Windows Update service (wuauserv) and BITS service
-Stop-Service -Name wuauserv -Force
-Stop-Service -Name bits -Force
+#Stop-Service -Name wuauserv -Force
+#Stop-Service -Name bits -Force
 
 # Delete files in SoftwareDistribution
-Remove-Item -Path "C:\Windows\SoftwareDistribution\*" -Force -Recurse
+#Remove-Item -Path "C:\Windows\SoftwareDistribution\*" -Force -Recurse
 
 # Start Windows Update service (wuauserv) and BITS service
-Start-Service -Name wuauserv
-Start-Service -Name bits
+#Start-Service -Name wuauserv
+#Start-Service -Name bits
 
 Start-Sleep -Milliseconds 500
 
 # Repair the Windows image by downloading replacement files from Windows Update.
 Write-Host "Repairing the Windows image..." -ForegroundColor Blue
 Start-Sleep -Milliseconds 500
-DISM /Online /Cleanup-Image /RestoreHealth
+#DISM /Online /Cleanup-Image /RestoreHealth
 
 # Clean up the component store to reduce the size of the WinSxS folder.
 Write-Host "Cleaning up the component store..." -ForegroundColor DarkCyan
 Start-Sleep -Milliseconds 500
-DISM /Online /Cleanup-Image /StartComponentCleanup
+#DISM /Online /Cleanup-Image /StartComponentCleanup
 
 # Scan and repair corrupted or missing system files.
 Write-Host "Scanning and repairing corrupted or missing system files..." -ForegroundColor Cyan
 Start-Sleep -Milliseconds 500
-sfc /scannow
+#sfc /scannow
 
 # Scan and repair file system errors and bad sectors on an external drive with the drive letter "C:"
 Write-Host "Scanning and repairing file system errors on drive C:..." -ForegroundColor Yellow
 Start-Sleep -Milliseconds 500
-echo Y | chkdsk /f /r C:
+#echo Y | chkdsk /f /r C:
 
 Write-Host ""
 Write-Host "Maintenance completed. Please restart the computer" -ForegroundColor Green

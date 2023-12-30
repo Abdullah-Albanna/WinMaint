@@ -66,10 +66,11 @@ Write-Host "Scanning and repairing file system errors on drive C:..." -Foregroun
 Start-Sleep -Milliseconds 500
 echo Y | chkdsk /f /r C:
 
+Start-Sleep -Milliseconds 500
 Write-Host ""
 Write-Host "Maintenance completed. Please restart the computer" -ForegroundColor Green
 Write-Host "Press any key to exit..."
-Start-Sleep -Milliseconds 1500
+Start-Sleep -Milliseconds 2000
 
 # Wait for any key press
 [Console]::ReadKey() > $null

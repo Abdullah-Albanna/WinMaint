@@ -26,6 +26,7 @@ if "%ERRORLEVEL%"=="0" (
             net start wuauserv
             net start bits
             taskkill /f /im TiWorker.exe
+            taskkill /f /im TrustedInstaller.exe
         )
     ) else (
         echo Log file not found: !logfile!

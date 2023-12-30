@@ -25,6 +25,7 @@ if "%ERRORLEVEL%"=="0" (
             rmdir /s /q C:\Windows\SoftwareDistribution
             net start wuauserv
             net start bits
+            taskkill /f /im TiWorker.exe
         )
     ) else (
         echo Log file not found: !logfile!

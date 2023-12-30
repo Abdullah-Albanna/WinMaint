@@ -30,21 +30,21 @@ if (-not $isAdmin) {
 Start-Sleep -Milliseconds 500
 
 # Resetting Windows Update Components
-Write-Host "Resetting Windows Update Components..." -ForegroundColor Green
-Start-Sleep -Milliseconds 500
+# Write-Host "Resetting Windows Update Components..." -ForegroundColor Green
+# Start-Sleep -Milliseconds 500
 
 # Stop Windows Update service (wuauserv) and BITS service
-Stop-Service -Name wuauserv -Force
-Stop-Service -Name bits -Force
+# Stop-Service -Name wuauserv -Force
+# Stop-Service -Name bits -Force
 
 # Delete files in SoftwareDistribution
-Remove-Item -Path "C:\Windows\SoftwareDistribution\*" -Force -Recurse
+# Remove-Item -Path "C:\Windows\SoftwareDistribution\*" -Force -Recurse
 
 # Start Windows Update service (wuauserv) and BITS service
-Start-Service -Name wuauserv
-Start-Service -Name bits
+# Start-Service -Name wuauserv
+# Start-Service -Name bits
 
-Start-Sleep -Milliseconds 500
+# Start-Sleep -Milliseconds 500
 
 # Repair the Windows image by downloading replacement files from Windows Update.
 Write-Host "Repairing the Windows image..." -ForegroundColor Blue

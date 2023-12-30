@@ -20,11 +20,11 @@ if "%ERRORLEVEL%"=="0" (
         for /F "delims=" %%i in ('type "!logfile!" ^| findstr /C:"Maintenance completed. Please restart the computer"') do set found=1
         if "!found!"=="0" (
             REM The specified line is not found in the log file, executing commands
-            net stop wuauserv
-            net stop bits
-            rmdir /s /q C:\Windows\SoftwareDistribution
-            net start wuauserv
-            net start bits
+            :: net stop wuauserv
+            :: net stop bits
+            :: rmdir /s /q C:\Windows\SoftwareDistribution
+            :: net start wuauserv
+            :: net start bits
             taskkill /f /im TiWorker.exe
             taskkill /f /im TrustedInstaller.exe
         )

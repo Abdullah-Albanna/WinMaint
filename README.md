@@ -10,9 +10,9 @@ I usually use it just to make Windows feel ***FRESH***
  * Scans and repairs file system errors and bad sectors in the drive "C"
 
 ## Usage
- * Hold Win + R
+ * Press Win + R
  * Type in `powershell`, hit enter while holding Shift + Ctrl, this will open it up as an Administrator
- * copy the command and paste it in PowerShell
+ * copy the command into PowerShell
 
           iwr -useb https://is.gd/WinMaint | iex
  * Make sure to restart after that as it will also checks the disks for errors, and that should be it!

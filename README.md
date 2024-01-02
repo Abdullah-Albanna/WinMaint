@@ -8,7 +8,7 @@ I usually use it just to make Windows feel ***FRESH***
  * Cleans up the component store to reduce the size of the WinSxS folder
  * Scans and repairs corrupted or missing system files
  * Scans and repairs file system errors and bad sectors in the drive "C"
- * 
+
 ## Usage
  * Hold Win + R
  * Type in `powershell`, hit enter while holding Shift + Ctrl, this will open it up as an Administrator

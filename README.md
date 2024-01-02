@@ -8,10 +8,7 @@ I usually use it just to make Windows feel ***FRESH***
  * Cleans up the component store to reduce the size of the WinSxS folder
  * Scans and repairs corrupted or missing system files
  * Scans and repairs file system errors and bad sectors in the drive "C"
-
-NOTE: If you have already downloaded Windows Updates and you want to install them, please do, becuase the script will delete them!.
-      It also turns on `Bits` `wuauserv`, which are Windows Updates services (I get more successful rate when thoes are on, you could obviouslly turn them off later if you want)
-
+ * 
 ## Usage
  * Hold Win + R
  * Type in `powershell`, hit enter while holding Shift + Ctrl, this will open it up as an Administrator
